@@ -60,15 +60,16 @@ SUMMARY
 	function userConnection(PDO $db, $email, $password){
 		if(!empty($email) && !empty($password)){
 			//Requête SQL
-			$sql = "SELECT * FROM users WHERE email = :email AND password = :password LIMIT 1";
+			$sql = "SELECT * FROM users WHERE email = :email LIMIT 1";
 
 			$req = $db->prepare($sql);
 			$req->execute(array(
 				':email' => $email,
-				':password' => $password
 			));
 
-			$result = $req->fetch(PDO::FETCH_ASSOC);
+			$data = $req->fetch(PDO::FETCH_ASSOC);
+            $passwordHash = $data['password'];
+            $result = password_verify($password, $passwordHash);
 
 			//Si le fetch réussi, alors un résultat a été retourné donc le couple email / password est correct
 			if($result == true){

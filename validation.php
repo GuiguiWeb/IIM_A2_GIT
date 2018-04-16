@@ -9,10 +9,11 @@ if(	isset($_POST['username']) && isset($_POST['email']) && isset($_POST['passwor
     $username = htmlspecialchars($_POST['username']);
     $email = htmlspecialchars($_POST['email']);
     $password = htmlspecialchars($_POST['password']);
+    $passwordEncrypted = password_hash($password, PASSWORD_DEFAULT);
 
     if(isUsernameAvailable($db, $username)) {
         if(isEmailAvailable($db, $email)) {
-            userRegistration($db, $username, $email, $password);
+            userRegistration($db, $username, $email, $passwordEncrypted);
         } else {
             $error = "Email indisponible";
         }
