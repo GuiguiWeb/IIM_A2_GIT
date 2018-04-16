@@ -47,18 +47,9 @@
                         <div class="row">
                             <strong>Tags:</strong>
                             <?php
-                            $tags = getTagsByArtist(getArtistWithMusicName($music['title']));
-                            if (!empty($tags)) {
-                                if (is_array($tags)) {
-                                    foreach ($tags as $tag) {
-                                        echo '' . $tag->name . ', ';
-                                    }
-                                } else {
-                                    echo $tags;
-                                }
-                            } else {
-                                echo 'Error';
-                            }
+                            $artistName = getArtistWithMusicName($music['title']);
+                            $tags = getTagsByArtist($artistName);
+                            displayTagsByArtist($tags);
                             ?>
                         </div>
                     </div>

@@ -312,5 +312,27 @@ function getTagsByArtist($artist)
     } else {
         return 'Error unknown !';
     }
+
+
+}
+
+function displayTagsByArtist($tags)
+{
+    if (!empty($tags)) {
+        if (is_array($tags)) {
+            $isNotFirstTag = false;
+            foreach ($tags as $tag) {
+                if ($isNotFirstTag) {
+                    echo ', ';
+                }
+                $isNotFirstTag = true;
+                echo ucfirst($tag->name);
+            }
+        } else {
+            echo $tags;
+        }
+    } else {
+        echo 'Error';
+    }
 }
 
