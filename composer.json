@@ -1,0 +1,6 @@
+{
+  "require": {
+    "mashape/unirest-php": "^3.0",
+    "symfony/var-dumper": "^4.0"
+  }
+}

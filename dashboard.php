@@ -1,8 +1,9 @@
 <?php
 session_start();
 require('config/config.php');
+require 'vendor/autoload.php';
 require('model/functions.fn.php');
-require 'unirest-php/src/Unirest.php';
+
 
 /*===============================
 	Dashboard
