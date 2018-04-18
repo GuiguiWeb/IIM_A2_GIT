@@ -19,6 +19,7 @@
  * 1!FUNCTIONS
  **************************************************/
 
+require 'vendor/autoload.php';
 
 /*1.1!userRegistration
     return :
