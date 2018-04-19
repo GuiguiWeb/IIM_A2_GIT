@@ -106,7 +106,7 @@ input:focus {
 	transition:all 0.1s linear;
 }
 
-#success, 
+#success,
 #error {
 	text-transform: uppercase;
 	letter-spacing: 1px;

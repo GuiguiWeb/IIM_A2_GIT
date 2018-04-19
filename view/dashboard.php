@@ -1,5 +1,6 @@
 <body>
 <?php include '_topbar.php'; ?>
+
 <div class="container">
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -50,6 +51,21 @@
                             $artistName = getArtistWithMusicName($music['title']);
                             $tags = getTagsByArtist($artistName);
                             displayTagsByArtist($tags);
+                            ?>
+
+
+                            <form class='comments' method='POST' action='comments.php'>
+                                <input type='hidden' name='userid' value='<?php echo $_SESSION['id']; ?>'>
+                                <textarea name='message' id='' cols='30' rows='10'
+                                          placeholder='Écrire un commentaire'></textarea><br>
+                                <button type='submit' name='commentSubmit' class='btn btn-success'>Ajouter un
+                                    commentaire
+                                </button>
+                            </form>
+                            <br><br>
+
+                            <?php
+                            getComments($db);
                             ?>
                         </div>
                     </div>
