@@ -19,7 +19,7 @@
  * 1!FUNCTIONS
  **************************************************/
 
-require 'vendor/autoload.php';
+require $_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php';
 
 /*1.1!userRegistration
     return :
@@ -80,11 +80,11 @@ function userConnection(PDO $db, $email, $password)
         if ($result == true) {
 
             //on définit la SESSION
-            $_SESSION['id'] = $result['id'];
-            $_SESSION['username'] = $result['username'];
-            $_SESSION['email'] = $result['email'];
-            $_SESSION['created_at'] = $result['created_at'];
-            $_SESSION['image'] = $result['picture'];
+            $_SESSION['id'] = $data['id'];
+            $_SESSION['username'] = $data['username'];
+            $_SESSION['email'] = $data['email'];
+            $_SESSION['created_at'] = $data['created_at'];
+            $_SESSION['image'] = $data['picture'];
 
             return true;
         } else {
