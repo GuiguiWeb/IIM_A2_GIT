@@ -1,6 +1,8 @@
 {
   "require": {
     "mashape/unirest-php": "^3.0",
-    "symfony/var-dumper": "^4.0"
+    "symfony/var-dumper": "^4.0",
+    "nesbot/carbon": "^1.26",
+    "jenssegers/date": "^3.3"
   }
 }

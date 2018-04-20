@@ -18,6 +18,11 @@ class ComposerStaticInit4f2439b11bab6ad7be5753ca7c5aceb2
             'Symfony\\Polyfill\\Php72\\' => 23,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Component\\VarDumper\\' => 28,
+            'Symfony\\Component\\Translation\\' => 30,
+        ),
+        'J' => 
+        array (
+            'Jenssegers\\Date\\' => 16,
         ),
     );
 
@@ -34,6 +39,18 @@ class ComposerStaticInit4f2439b11bab6ad7be5753ca7c5aceb2
         array (
             0 => __DIR__ . '/..' . '/symfony/var-dumper',
         ),
+        'Symfony\\Component\\Translation\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/translation',
+        ),
+        'Jenssegers\\Date\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jenssegers/date/src',
+        ),
+    );
+
+    public static $fallbackDirsPsr4 = array (
+        0 => __DIR__ . '/..' . '/nesbot/carbon/src',
     );
 
     public static $prefixesPsr0 = array (
@@ -51,6 +68,7 @@ class ComposerStaticInit4f2439b11bab6ad7be5753ca7c5aceb2
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit4f2439b11bab6ad7be5753ca7c5aceb2::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit4f2439b11bab6ad7be5753ca7c5aceb2::$prefixDirsPsr4;
+            $loader->fallbackDirsPsr4 = ComposerStaticInit4f2439b11bab6ad7be5753ca7c5aceb2::$fallbackDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInit4f2439b11bab6ad7be5753ca7c5aceb2::$prefixesPsr0;
 
         }, null, ClassLoader::class);

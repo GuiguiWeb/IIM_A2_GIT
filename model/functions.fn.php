@@ -21,6 +21,11 @@
 
 require 'vendor/autoload.php';
 
+use Carbon\Carbon;
+use Jenssegers\Date\Date;
+
+Date::setLocale('fr');
+
 /*1.1!userRegistration
     return :
         true for registration OK
@@ -340,3 +345,46 @@ function displayTagsByArtist($tags)
     }
 }
 
+function addComments(PDO $db, $user_id, $music_id, $message)
+{
+    $sql = "
+			INSERT INTO
+				comments
+			SET
+				uid = :user_id,
+				mid = :music_id,
+				message = :message,
+		";
+    $req = $db->prepare($sql);
+    $req->execute(array(
+        ':user_id'  => $user_id,
+        ':music_id' => $music_id,
+        ':message'  => $message,
+    ));
+    return true;
+}
+
+function getComments($db, $mid)
+{
+    $sql = "SELECT * FROM comments where mid = :musicid";
+    $req = $db->prepare($sql);
+    $req->execute(array(
+        ':musicid' => $mid
+    ));
+    $comments = $req->fetchall(PDO::FETCH_ASSOC);
+
+    return $comments;
+}
+
+function editComments($db)
+{
+    if (isset($_POST['commentSubmit'])) {
+        $cid = $_POST['cid'];
+        $uid = $_POST['uid'];
+        $date = $_POST['date'];
+        $message = $_POST['message'];
+        $sql = "UPDATE comments SET message='$message' WHERE cid='$cid'";
+        $result = $db->query($sql);
+        header("Location: dashboard.php");
+    }
+}
