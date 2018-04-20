@@ -55,6 +55,7 @@ include '_topbar.php'; ?>
                             $artistName = getArtistWithMusicName($music['title']);
                             $tags = getTagsByArtist($artistName);
                             displayTagsByArtist($tags);
+
                             ?>
 
                             <form class='comments' method='POST' action='comments.php' style="margin-bottom: 25px; margin-top: 25px">
@@ -74,8 +75,8 @@ include '_topbar.php'; ?>
                                 foreach ($comments as $row) : ?>
                                     <p><?php echo $row['message']; ?></p>
                                     <p><small>
-                                        Message posté par .. le <?php $date = new Date($row['date']);
-                                        echo $date->format('l j F Y H:i:s'); ?>
+                                        Message posté par <strong><?php echo $row['username']; ?></strong> le <?php $date = new Date($row['date']);
+                                        echo $date->format('l j F Y H:i'); ?>
                                     </small></p>
                                     <hr>
 

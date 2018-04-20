@@ -12,16 +12,13 @@ require('model/functions.fn.php');
      exit();
  }
 
-if (isset($_POST['userid']) && isset($_POST['musicid']) && isset($_POST['message']) ) {
-    if (!empty($_POST['userid']) && !empty($_POST['musicid']) && !empty($_POST['message'])) {
+if (isset($_POST['userid']) && isset($_POST['musicid']) && isset($_POST['message']) && !empty($_POST['userid']) && !empty($_POST['musicid']) && !empty($_POST['message'])) {
         $message = htmlspecialchars($_POST['message']);
         $musicid = htmlspecialchars($_POST['musicid']);
         $userid = htmlspecialchars($_POST['userid']);
         addComments($db, $userid, $musicid, $message);
-        echo "Test";
-        $_SESSION['message'] = 'Erreur : Formulaire complet !';
+        $_SESSION['message'] = 'Commentaire envoyé !';
         header('Location: dashboard.php');
-    }
 } else {
     $_SESSION['message'] = 'Erreur : Formulaire incomplet';
     header('Location: dashboard.php');

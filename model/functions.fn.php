@@ -353,7 +353,7 @@ function addComments(PDO $db, $user_id, $music_id, $message)
 			SET
 				uid = :user_id,
 				mid = :music_id,
-				message = :message,
+				message = :message
 		";
     $req = $db->prepare($sql);
     $req->execute(array(
@@ -366,15 +366,18 @@ function addComments(PDO $db, $user_id, $music_id, $message)
 
 function getComments($db, $mid)
 {
-    $sql = "SELECT * FROM comments where mid = :musicid";
+    $sql = "SELECT comments.*, users.id AS user_id, users.username FROM comments  INNER JOIN users ON comments.uid = users.id AND mid = :musicid ORDER BY comments.date DESC";
+
     $req = $db->prepare($sql);
     $req->execute(array(
         ':musicid' => $mid
     ));
-    $comments = $req->fetchall(PDO::FETCH_ASSOC);
+    $comments = $req->fetchAll(PDO::FETCH_ASSOC);
 
     return $comments;
 }
+
+
 
 function editComments($db)
 {
