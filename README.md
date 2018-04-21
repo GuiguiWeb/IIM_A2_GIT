@@ -3,7 +3,7 @@ by Ali Bouaida and Guillaume Douceron
 
 
 ## INSTALL
-1. Upload the file `IIM_Git_SounCloud_GuillaumeAli.sql` into your database
+1. Upload the file config/`IIM_Git_SounCloud_GuillaumeAli.sql` into your database
 2. In config folder, duplicate `config-sample.php` in `config.php` 
 3. Enter database information in `config.php`
 4. Run $ `composer install` in your terminal
