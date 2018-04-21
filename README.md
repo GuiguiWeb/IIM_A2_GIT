@@ -7,13 +7,13 @@ Documentation: https://github.com/GuiguiWeb/IIM_A2_GIT/wiki/
 
 # WORK
 
-###Guillaume
+### Guillaume
 * Login
 * Tags
 * API
 * Composer
 * Likes
 
-###Ali
+### Ali
 * Register
 * Password Hashing
