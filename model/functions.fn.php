@@ -378,7 +378,6 @@ function getComments($db, $mid)
 }
 
 
-
 function editComments($db)
 {
     if (isset($_POST['commentSubmit'])) {
@@ -390,4 +389,89 @@ function editComments($db)
         $result = $db->query($sql);
         header("Location: dashboard.php");
     }
+}
+
+
+/**
+ * @param PDO $db
+ * @param int $mid
+ * @param int $uid
+ *
+ * @return mixed
+ */
+function getLikesByPostAndUser($db, $uid, $mid)
+{
+    $sql = "SELECT * FROM likes WHERE mid = :musicid AND uid = :userid";
+    $req = $db->prepare($sql);
+    $req->execute(array(
+        ':musicid' => $mid,
+        ':userid' => $uid,
+    ));
+    $likes = $req->fetchAll(PDO::FETCH_ASSOC);
+
+    return $likes;
+}
+
+/**
+ * @param PDO $db
+ * @param int $user_id
+ * @param int $music_id
+ *
+ * @return bool
+ */
+function addLike(PDO $db, $user_id, $music_id)
+{
+    if (getLikesByPostAndUser($db, $user_id, $music_id)) {
+        return false;
+    } else {
+        $sql = "
+			INSERT INTO
+				likes
+			SET
+				uid = :user_id,
+				mid = :music_id
+		";
+        $req = $db->prepare($sql);
+        $req->execute(array(
+            ':user_id'  => $user_id,
+            ':music_id' => $music_id,
+        ));
+        return true;
+    }
+}
+
+/**
+ * @param PDO $db
+ * @param int $mid
+ *
+ * @return array
+ */
+function getLikesByMusic(PDO $db, $mid)
+{
+    $sql = "SELECT * FROM likes WHERE mid = :mid";
+    $req = $db->prepare($sql);
+    $req->execute(array(
+        ':mid' => $mid,
+    ));
+    $likes = $req->fetchAll(PDO::FETCH_ASSOC);
+
+    return $likes;
+}
+
+/**
+ * @param PDO $db
+ * @param int $mid
+ *
+ * @return int
+ */
+function getNumberOfLikesByMusic(PDO $db, $mid)
+{
+    $sql = "SELECT * FROM likes WHERE mid = :mid";
+    $req = $db->prepare($sql);
+    $req->execute(array(
+        ':mid' => $mid,
+    ));
+    $likes = $req->rowCount();
+
+    return $likes;
 }

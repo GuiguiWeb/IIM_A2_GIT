@@ -37,6 +37,23 @@ include '_topbar.php'; ?>
                                             echo '<li><a href="delete.php?id=' . $music['id'] . '"><i class="fa fa-times"></i></a></li>';
                                         } ?>
                                     </ul>
+                                    <?php $_SESSION['id'] = 7; //addLike($db, $_SESSION['id'],  $music['id']);
+                                    if (getLikesByPostAndUser($db, $_SESSION['id'], $music['id'])) : ?>
+                                        <span style="color: red;">
+                                            <?php echo getNumberOfLikesByMusic($db, $music['id']); ?>
+                                            <i class="fa fa-heart" aria-hidden="true"></i>
+                                        </span>
+                                    <?php else: ?>
+
+                                        <form action="likes.php" method="post">
+                                            <input type="hidden" name="musicid" value='<?php echo $music['id']; ?>'>
+                                            <span style="color: red;"><?php echo getNumberOfLikesByMusic($db, $music['id']); ?></span>
+                                            <button type="submit" name="likeSubmit" style="border: 1px solid transparent;padding: 0;">
+                                                <span style="color: red;"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+                                            </button>
+                                        </form>
+
+                                    <?php endif;; ?>
                                 </div>
                                 <b class="username">Posté par <?php echo $music['username']; ?></b>
                                 <h3 class="title">
@@ -74,10 +91,13 @@ include '_topbar.php'; ?>
                             if (!empty($comments)) :
                                 foreach ($comments as $row) : ?>
                                     <p><?php echo $row['message']; ?></p>
-                                    <p><small>
-                                        Message posté par <strong><?php echo $row['username']; ?></strong> le <?php $date = new Date($row['date']);
-                                        echo $date->format('l j F Y H:i'); ?>
-                                    </small></p>
+                                    <p>
+                                        <small>
+                                            Message posté par
+                                            <strong><?php echo $row['username']; ?></strong> le <?php $date = new Date($row['date']);
+                                            echo $date->format('l j F Y H:i'); ?>
+                                        </small>
+                                    </p>
                                     <hr>
 
                                 <?php endforeach; endif; ?>
