@@ -7,13 +7,13 @@ define("PARAMETERSINVALID", 1);
 define("MUSICIDINVALID", 2);
 
 /*===============================
-	COMMENTS
+	LIKES
 ===============================*/
 
 if (!empty($_GET['musicid'])) {
     $musicId = $_GET['musicid'];
     if (selectMusic($db, $musicId)) {
-        $comments = getComments($db, $musicId);
+        $likes = getNumberOfLikesByMusic($db, $musicId);
     } else {
         $errors = ['error' => MUSICIDINVALID, 'message' => 'Music id invalid'];
     }
@@ -22,7 +22,7 @@ if (!empty($_GET['musicid'])) {
 }
 
 if (empty($errors)) {
-    $data['comments'] = $comments;
+    $data['Likes'] = $likes;
 } else {
     $data = $errors;
 }
