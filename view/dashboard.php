@@ -37,7 +37,7 @@ include '_topbar.php'; ?>
                                             echo '<li><a href="delete.php?id=' . $music['id'] . '"><i class="fa fa-times"></i></a></li>';
                                         } ?>
                                     </ul>
-                                    <?php $_SESSION['id'] = 7; //addLike($db, $_SESSION['id'],  $music['id']);
+                                    <?php
                                     if (getLikesByPostAndUser($db, $_SESSION['id'], $music['id'])) : ?>
                                         <span style="color: red;">
                                             <?php echo getNumberOfLikesByMusic($db, $music['id']); ?>

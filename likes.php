@@ -14,8 +14,8 @@ if (!isset($_SESSION) OR empty($_SESSION)) {
 
 if (isset($_POST['musicid']) && !empty($_POST['musicid'])) {
     $musicid = htmlspecialchars($_POST['musicid']);
-    $userid = htmlspecialchars($_SESSION['id']);
-    addLike($db, 7, $musicid);
+    $userid = $_SESSION['id'];
+    addLike($db, $userid, $musicid);
     $_SESSION['message'] = 'Like posté !';
     header('Location: dashboard.php');
 } else {
