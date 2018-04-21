@@ -44,10 +44,12 @@ include '_topbar.php'; ?>
                                             <i class="fa fa-heart" aria-hidden="true"></i>
                                         </span>
                                     <?php else: ?>
+
                                         <form action="likes.php" method="post">
-                                            <input type='hidden' name='musicid' value='<?php echo $music['id']; ?>'>
-                                            <button type='submit' name='likeSubmit' class='btn btn-danger'><span style="color: red;"><?php echo getNumberOfLikesByMusic($db, $music['id']); ?>
-                                                    <i class="fa fa-heart-o" aria-hidden="true"></i></span>
+                                            <input type="hidden" name="musicid" value='<?php echo $music['id']; ?>'>
+                                            <span style="color: red;"><?php echo getNumberOfLikesByMusic($db, $music['id']); ?></span>
+                                            <button type="submit" name="likeSubmit" style="border: 1px solid transparent;padding: 0;">
+                                                <span style="color: red;"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
                                             </button>
                                         </form>
 
