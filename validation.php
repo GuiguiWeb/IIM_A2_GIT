@@ -14,6 +14,14 @@ if(	isset($_POST['username']) && isset($_POST['email']) && isset($_POST['passwor
     if(isUsernameAvailable($db, $username)) {
         if(isEmailAvailable($db, $email)) {
             userRegistration($db, $username, $email, $passwordEncrypted);
+            
+            userConnection($db, $email, $password);
+
+            if (userConnection($db, $email, $password)) {
+                header('Location: dashboard.php');
+            } else {
+                $error = "Mauvais identifiants";
+            }
         } else {
             $error = "Email indisponible";
         }

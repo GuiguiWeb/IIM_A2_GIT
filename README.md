@@ -26,3 +26,4 @@ Documentation: https://github.com/GuiguiWeb/IIM_A2_GIT/wiki/
 ### Ali
 * Register
 * Password Hashing
+* Comments
