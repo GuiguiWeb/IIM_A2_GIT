@@ -12,7 +12,7 @@ define("ARTISTUNKNOWN", 2);
 
 if (!empty($_GET['artist'])) {
     $artist = $_GET['artist'];
-    if (getTagsByArtist($artist) != "The artist you supplied could not be found") {
+    if (getTagsByArtist($artist) AND getTagsByArtist($artist) != "The artist you supplied could not be found") {
         $tags = getTagsByArtist($artist);
     } else {
         $errors = ['error' => ARTISTUNKNOWN, 'message' => 'Artist unknown'];
