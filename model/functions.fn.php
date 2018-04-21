@@ -23,8 +23,8 @@ require $_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php';
 
 use Carbon\Carbon;
 use Jenssegers\Date\Date;
-
 Date::setLocale('fr');
+
 
 /*1.1!userRegistration
     return :
