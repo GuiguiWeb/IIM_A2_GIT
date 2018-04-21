@@ -21,7 +21,6 @@ if (!empty($_GET['artist'])) {
     $errors = ['error' => PARAMETERSINVALID, 'message' => 'Invalid parameters'];
 }
 
-
 if (empty($errors)) {
     foreach ($tags as $key => $value) {
         $data['tags'][$key] = $value->name;
